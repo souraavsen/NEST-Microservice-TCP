@@ -4,11 +4,13 @@ import {
   Get,
   Inject,
   Param,
-  Post
+  Post,
+  UseGuards
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 import { AuthServiceDef } from '../services';
+import { AuthGuard } from 'src/guard/auth/auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -23,6 +25,7 @@ export class AuthController {
     );
   }
 
+  @UseGuards(AuthGuard)
   @Get('profile/:email')
   async profile(@Param('email') email: string) {
     return await firstValueFrom(

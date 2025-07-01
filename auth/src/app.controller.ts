@@ -28,4 +28,9 @@ export class AppController {
     console.log('ProfileEvent Called');
     return this.appService.profile(email);
   }
+
+  @MessagePattern('validate-token')
+  async validateToken(@Payload() token: string) {
+    return this.appService.validateToken(token);
+  }
 }

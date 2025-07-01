@@ -7,6 +7,7 @@ export const AuthServiceDef = {
   PATTERNS: {
     Login: 'auth-login',
     Profile: 'profile',
+    ValidateToken: 'validate-token',
   },
 };
 
